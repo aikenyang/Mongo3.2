@@ -2,14 +2,14 @@
 #2016/6/2, {"Company":"Trend Micro", "Department":"DCS", "Auther":"Kenneth Yang"}
 #!/bin/bash
 
-#0. preparation, create working folder
-sudo mkdir \Mongo3.2
-cd \Mongo3.2
+#0. preparation, cd to home folder
+cd ~
 
 #0. preparation, get the config files form github/S3/shared folder
 #example:
 sudo yum install -y git
 git clone https://github.com/aikenyang/Mongo3.2.git
+cd Mongo3.2
 
 #1. change OS ulimit, /etc/security/limits.conf
 #verify, ulimit -a
