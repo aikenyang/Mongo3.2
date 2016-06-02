@@ -1,15 +1,18 @@
 #intsallation script for MongoDB 3.2, WiredTiger, yaml config file
+#2016/6/2, {"Company":"Trend Micro", "Department":"DCS", "Auther":"Kenneth Yang"}
 #!/bin/bash
+
+#0. preparation, create working folder
+sudo mkdir \Mongo3.2
+cd \Mongo3.2
+
 #0. preparation, get the config files form github/S3/shared folder
 #example:
 sudo yum install -y git
-git clone https://github.com/aikenyang/Mongo3.0.git
-#for AWS diff parts
-#git clone https://github.com/aikenyang/AWS_Mongo3.0.git
+git clone https://github.com/aikenyang/Mongo3.2.git
 
 #1. change OS ulimit, /etc/security/limits.conf
 #verify, ulimit -a
-cd \Mongo3.0
 sudo \cp -f limits.conf /etc/security/limits.conf
 
 #2. change OS 90 nproc, /etc/security/limits.d/90-nproc.conf
@@ -36,30 +39,21 @@ sudo chkconfig --add disable-transparent-hugepages
 sudo \cp -f mongodb-org-3.0.repo /etc/yum.repos.d/mongodb-org-3.0.repo
 
 
-#10. download Mongo3.0 RPM
+#10. download Mongo3.2 RPM
 #http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/stable/x86_64/RPMS/
 
-wget http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/3.0/x86_64/RPMS/mongodb-org-3.0.10-1.el6.x86_64.rpm
-wget http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/3.0/x86_64/RPMS/mongodb-org-mongos-3.0.10-1.el6.x86_64.rpm
-wget http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/3.0/x86_64/RPMS/mongodb-org-server-3.0.10-1.el6.x86_64.rpm
-wget http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/3.0/x86_64/RPMS/mongodb-org-shell-3.0.10-1.el6.x86_64.rpm
-wget http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/3.0/x86_64/RPMS/mongodb-org-tools-3.0.10-1.el6.x86_64.rpm
+wget http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/3.2/x86_64/RPMS/mongodb-org-3.2.6-1.el6.x86_64.rpm
+wget http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/3.2/x86_64/RPMS/mongodb-org-mongos-3.2.6-1.el6.x86_64.rpm
+wget http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/3.2/x86_64/RPMS/mongodb-org-server-3.2.6-1.el6.x86_64.rpm
+wget http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/3.2/x86_64/RPMS/mongodb-org-shell-3.2.6-1.el6.x86_64.rpm
+wget http://repo.mongodb.org/yum/redhat/6Server/mongodb-org/3.2/x86_64/RPMS/mongodb-org-tools-3.2.6-1.el6.x86_64.rpm
 
-#----------------------for AWS
-#http://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.0/x86_64/RPMS/
-
-#wget http://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.0/x86_64/RPMS/mongodb-org-3.0.6-1.amzn1.x86_64.rpm
-#wget http://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.0/x86_64/RPMS/mongodb-org-mongos-3.0.6-1.amzn1.x86_64.rpm
-#wget http://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.0/x86_64/RPMS/mongodb-org-server-3.0.6-1.amzn1.x86_64.rpm
-#wget http://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.0/x86_64/RPMS/mongodb-org-shell-3.0.6-1.amzn1.x86_64.rpm
-#wget http://repo.mongodb.org/yum/amazon/2013.03/mongodb-org/3.0/x86_64/RPMS/mongodb-org-tools-3.0.6-1.amzn1.x86_64.rpm
-
-#11. install Mongo3.0 RPM
-sudo rpm -ivh mongodb-org-server-3.0.10-1.el6.x86_64.rpm
-sudo rpm -ivh mongodb-org-mongos-3.0.10-1.el6.x86_64.rpm
-sudo rpm -ivh mongodb-org-shell-3.0.10-1.el6.x86_64.rpm
-sudo rpm -ivh mongodb-org-tools-3.0.10-1.el6.x86_64.rpm
-sudo rpm -ivh mongodb-org-3.0.10-1.el6.x86_64.rpm
+#11. install Mongo3.2 RPM
+sudo rpm -ivh mongodb-org-server-3.2.6-1.el6.x86_64.rpm
+sudo rpm -ivh mongodb-org-mongos-3.2.6-1.el6.x86_64.rpm
+sudo rpm -ivh mongodb-org-shell-3.2.6-1.el6.x86_64.rpm
+sudo rpm -ivh mongodb-org-tools-3.2.6-1.el6.x86_64.rpm
+sudo rpm -ivh mongodb-org-3.2.6-1.el6.x86_64.rpm
 
 #20. replace/modify /etc/mongod.conf
 sudo \cp -f mongod.conf /etc/mongod.conf
