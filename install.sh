@@ -1,4 +1,4 @@
-#intsallation script for MongoDB 3.2, WiredTiger, yaml config file
+#intsallation script for MongoDB 3.2, community, WiredTiger, yaml config file, replica set enable
 #2016/6/2, {"Company":"Trend Micro", "Department":"DCS", "Auther":"Kenneth Yang"}
 #!/bin/bash
 
@@ -36,7 +36,7 @@ sudo chkconfig --add disable-transparent-hugepages
 #\cp -f sysctl.conf /etc/sysctl.conf
 
 #6. Change OS repository, /etc/yum.repos.d/mongodb-org-3.0.repo
-sudo \cp -f mongodb-org-3.0.repo /etc/yum.repos.d/mongodb-org-3.0.repo
+sudo \cp -f mongodb-org-3.2.repo /etc/yum.repos.d/mongodb-org-3.2.repo
 
 
 #10. download Mongo3.2 RPM
